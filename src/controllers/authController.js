@@ -72,7 +72,8 @@ const authenticateUser = async (req, res) => {
                     // Log das informações da sessão
                     console.log('Sessão criada com sucesso:');
                     console.log(req.session);
-                    return res.json({ message: 'Usuário autenticado com sucesso!' });
+                    return res.redirect('/dashboard');
+                    // return res.json({ message: 'Usuário autenticado com sucesso!' });
                 } else {
                     return res.status(401).json({ error: 'Credenciais inválidas' });
                 }

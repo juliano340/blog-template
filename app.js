@@ -2,18 +2,24 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const routes = require('./src/routes');
+const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 const port = 3000;
 
 // Configuração do middleware de sessão
 app.use(
-    session({
-      secret: 'sua_chave_secreta',
-      resave: false,
-      saveUninitialized: false,
-    })
-  );
+  session({
+    secret: 'sua_chave_secreta',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Configuração do mecanismo de template EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Middleware para tratar as requisições JSON
 app.use(bodyParser.json());
