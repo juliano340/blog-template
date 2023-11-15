@@ -1,9 +1,19 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const routes = require('./src/routes');
 
 const app = express();
 const port = 3000;
+
+// Configuração do middleware de sessão
+app.use(
+    session({
+      secret: 'sua_chave_secreta',
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
 
 // Middleware para tratar as requisições JSON
 app.use(bodyParser.json());

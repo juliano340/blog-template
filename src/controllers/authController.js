@@ -62,13 +62,16 @@ const authenticateUser = async (req, res) => {
             }
 
             const storedHashedPassword = results[0].senha;
-            
 
             try {
                 // Comparar a senha fornecida com o hash armazenado no banco de dados
                 const match = await bcrypt.compare(senha, storedHashedPassword);
 
                 if (match) {
+                    req.session.userId = results[0].id;
+                    // Log das informações da sessão
+                    console.log('Sessão criada com sucesso:');
+                    console.log(req.session);
                     return res.json({ message: 'Usuário autenticado com sucesso!' });
                 } else {
                     return res.status(401).json({ error: 'Credenciais inválidas' });
