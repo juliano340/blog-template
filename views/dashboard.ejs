@@ -8,8 +8,11 @@
 <body>
 
     <h1>Bem-vindo ao Dashboard</h1>
-    <p>Usuário: <%= user.email %></p>
-    <p>Informações dinâmicas: <%= dynamicInfo %></p>
+    <p>Olá, <%= nome %>!</p>
+
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
     
 </body>
 </html>

@@ -69,6 +69,8 @@ const authenticateUser = async (req, res) => {
 
                 if (match) {
                     req.session.userId = results[0].id;
+                    req.session.userName = results[0].nome;
+                    req.session.email = results[0].email;
                     // Log das informações da sessão
                     console.log('Sessão criada com sucesso:');
                     console.log(req.session);
