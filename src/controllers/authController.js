@@ -62,8 +62,7 @@ const authenticateUser = async (req, res) => {
             }
 
             const storedHashedPassword = results[0].senha;
-            const hashedPassword = await bcrypt.hash(storedHashedPassword, 10);
-            console.log(hashedPassword);
+            
 
             try {
                 // Comparar a senha fornecida com o hash armazenado no banco de dados
