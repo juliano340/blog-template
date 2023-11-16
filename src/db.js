@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: '', // Senha do seu banco de dados
   database: 'TESTE',
 };
 
@@ -13,4 +13,4 @@ const createConnection = () => {
   return mysql.createConnection(dbConfig);
 };
 
-module.exports = { createConnection };
+module.exports = { createConnection, dbConfig };

@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
+
 <body>
 
-    <h1>Bem-vindo ao Dashboard</h1>
-    <p>Olá, <%= nome %>!</p>
+    <header>
+        <div>
+            <h1>Bem-vindo ao Dashboard</h1>
+        </div>
+        <div>
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </header>
 
-    <form action="/logout" method="post">
-        <button type="submit">Logout</button>
-      </form>
-    
+    <h3>Olá, <%= nome %>!</h3>
+    <a href="/posts/create">Criar Novo Post</a>
+
 </body>
+
 </html>

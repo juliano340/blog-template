@@ -1,0 +1,55 @@
+<!-- views/createPost.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Post</title>
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    
+</head>
+
+<body>
+    <h1>Cadastro de Post</h1>
+    <!-- Formulário com o editor Quill -->
+    <form action="/posts/create" method="post">
+        <!-- Campo de título -->
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" required>
+
+        <label for="content">Conteúdo:</label>
+        <div name='content' id="editor" style="height: 300px;"></div> <!-- Container para o editor Quill -->
+        <input type="hidden" name="content" id="contentField">
+
+        <!-- Botão de envio -->
+        <button type="submit">Postar</button>
+    </form>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+        toolbar: [
+            [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['bold', 'italic', 'underline'],
+            ['link', 'image', 'video'],
+            [{ 'align': [] }],
+            ['clean'] 
+        ],
+    },
+});
+
+// Adicione um evento para atualizar o campo oculto
+quill.on('text-change', function() {
+    var contentField = document.getElementById('contentField');
+    contentField.value = quill.root.innerHTML;
+});
+
+    </script>
+</body>
+
+</html>

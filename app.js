@@ -8,6 +8,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Middleware para tratar as requisições JSON
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Configuração do middleware de sessão
 app.use(
   session({
@@ -20,10 +24,6 @@ app.use(
 // Configuração do mecanismo de template EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Middleware para tratar as requisições JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware para servir arquivos estáticos
 app.use(express.static('public'));

@@ -1,11 +1,11 @@
-// routes.js
-
 const express = require('express');
 const path = require('path');
 const { authenticateUser } = require('./controllers/authController');
 const { authenticateMiddleware } = require('./middleware/authMiddleware');
-
 const router = express.Router();
+const controllerPost = require('./controllers/controllerPost');
+
+
 
 // Rota de autenticação de usuários
 router.get('/login', authenticateMiddleware, (req, res) => {
@@ -43,5 +43,21 @@ router.post('/logout', authenticateMiddleware, (req, res) => {
     res.redirect('/login');
   });
 });
+
+router.get('/posts/create', authenticateMiddleware, (req, res) => {
+  res.render('createPost');
+})
+
+//Rota que controla o POST do formulário de posts
+
+router.post('/posts/create', authenticateMiddleware, controllerPost.criarPost)
+
+
+
+// Rota para lidar com páginas não encontradas (404)
+router.use((req, res) => {
+  res.status(404).send('Página não encontrada <a href="/login">Voltar</a>');
+});
+
 
 module.exports = router;
