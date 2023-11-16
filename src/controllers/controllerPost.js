@@ -1,7 +1,3 @@
-// controller.js
-
-const db = require('../db');
-const slugify = require('slugify');
 
 // Função para criar um novo post
 const criarPost = async (req, res) => {
@@ -39,4 +35,60 @@ const criarPost = async (req, res) => {
   }
 };
 
-module.exports = { criarPost };
+// controller.js
+
+const db = require('../db');
+const slugify = require('slugify');
+
+const listarPost = async (req, res) => {
+  try {
+    const connection = await db.createConnection();
+
+    connection.query('SELECT * FROM posts', (error, results) => {
+      connection.end();
+
+      if (error) {
+        console.error('Erro ao buscar posts:', error);
+        res.status(500).send('<p>Erro interno ao buscar posts.</p>');
+      } else {
+        const postsList = results.map(post => `<li><a href="/posts/${post.slug}">${post.title}</a></li>`).join('');
+        const html = `<ul>${postsList}</ul>`;
+        res.status(200).send(html);
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao buscar posts:', error);
+    res.status(500).send('<p>Erro interno ao buscar posts.</p>');
+  }
+};
+
+const visualizarPost = async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const connection = await db.createConnection();
+
+    connection.query('SELECT * FROM posts WHERE slug = ?', [slug], (error, results) => {
+      connection.end();
+
+      if (error) {
+        console.error('Erro ao buscar post:', error);
+        res.status(500).send('<p>Erro interno ao buscar o post.</p>');
+      } else if (results.length === 0) {
+        res.status(404).send('<p>Post não encontrado.</p>');
+      } else {
+        const post = results[0];
+        const html = `<h1>${post.title}</h1><p>${post.content}</p>`;
+        res.status(200).send(html);
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao buscar post:', error);
+    res.status(500).send('<p>Erro interno ao buscar o post.</p>');
+  }
+};
+
+
+
+
+module.exports = { criarPost, listarPost, visualizarPost };

@@ -52,12 +52,20 @@ router.get('/posts/create', authenticateMiddleware, (req, res) => {
 
 router.post('/posts/create', authenticateMiddleware, controllerPost.criarPost)
 
+//Rota para listar os posts
+router.get('/posts',  controllerPost.listarPost)
+
+
+// Rota para visualizar um post específico com base no slug
+router.get('/posts/:slug', controllerPost.visualizarPost);
 
 
 // Rota para lidar com páginas não encontradas (404)
 router.use((req, res) => {
   res.status(404).send('Página não encontrada <a href="/login">Voltar</a>');
 });
+
+
 
 
 module.exports = router;
