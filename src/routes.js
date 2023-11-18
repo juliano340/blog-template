@@ -59,6 +59,12 @@ router.get('/posts',  controllerPost.listarPost)
 // Rota para visualizar um post específico com base no slug
 router.get('/posts/:slug', controllerPost.visualizarPost);
 
+// Rota da tela inicial do blog
+router.get('/blog', controllerPost.blog);
+
+
+
+
 
 // Rota para lidar com páginas não encontradas (404)
 router.use((req, res) => {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+
+<body>
+<h1>Blog</h1>
+
+<% if (posts.length > 0) { %>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li> <a href="/posts/<%= post.slug %>"> <%= post.title %> </a></li>
+            <!-- Adicione outros campos do post conforme necessário -->
+        <% }); %>
+    </ul>
+
+    <!-- Adicionar links de paginação -->
+    <div>
+        <% if (currentPage > 1) { %>
+            <a href="/blog?page=1"><<</a>
+            <a href="/blog?page=<%= currentPage - 1 %>"><</a>
+        <% } %>
+
+        <% for (let i = 1; i <= pages; i++) { %>
+            <% if (i === parseInt(currentPage)) { %>
+                <a href="/blog?page=<%= i %>" style="font-weight: bold;"><%= i %></a>
+            <% } else { %>
+                <a href="/blog?page=<%= i %>"><%= i %></a>
+            <% } %>
+        <% } %>
+
+        <% if (parseInt(currentPage) < pages) { %>
+            <a href="/blog?page=<%= parseInt(currentPage) + 1 %>">></a>
+            <a href="/blog?page=<%= pages %>">>></a>
+        <% } %>
+    </div>
+<% } else { %>
+    <p>Não há posts cadastrados!</p>
+<% } %>
+
+</body>
+</body>
+        
+
+
+</html>
