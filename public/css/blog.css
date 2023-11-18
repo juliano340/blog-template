@@ -1,0 +1,63 @@
+/* styles.css */
+
+body {
+
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+
+    
+    background-color: #f4f4f4;
+    color: #black;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: black;
+}
+
+h3 {
+    color: #666;
+}
+
+p {
+    line-height: 1.6;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a lista de posts */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}

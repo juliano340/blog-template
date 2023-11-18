@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>@JULIANO340 - BLOG</title>
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<h1>Blog</h1>
+
+    <%- include('header'); %>
+
+<h1>ARTIGOS:</h1>
 
 <% if (posts.length > 0) { %>
     <ul>
@@ -42,9 +49,9 @@
     <p>Não há posts cadastrados!</p>
 <% } %>
 
+<%- include('footer'); %>
 </body>
-</body>
-        
+      
 
 
 </html>

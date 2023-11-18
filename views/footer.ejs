@@ -1,0 +1,23 @@
+<style>
+  footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+</style>
+
+
+<footer>
+    <p>&copy; <span id="currentYear"></span> juliano340.com. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const currentYear = new Date().getFullYear();
+    document.getElementById("currentYear").textContent = currentYear;
+  </script>
+  
+  

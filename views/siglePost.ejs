@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= post.title %></title>
+    <title>
+        <%= post.title %>
+    </title>
+    <link rel="stylesheet" href="../css/singlePost.css">
+    
+    <% function formatDate(dateString) { %>
+        <% const options={ day: 'numeric' , month: 'numeric' , year: 'numeric' }; %>
+            <% const date=new Date(dateString); %>
+                <%= date.toLocaleDateString('pt-BR', options); %>
+                    <% } %>
 </head>
+
 <body>
 
-    <h1><%= post.title %></h1>
-    <p><%= post.content %></p>
+    
+    <h1>
+        <%= post.title %>
+    </h1>
+    
+    
+    <p>Postado em: <%= formatDate(post.created_at) %>
+    </p>
+    <p>
+        <%= post.content %>
+    </p>
     <button onclick="goBack()">Voltar</button>
 
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
-    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        
+    </script>
+
 </body>
+
 </html>
